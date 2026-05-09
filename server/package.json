@@ -2,6 +2,10 @@
   "name": "vaultsync-server",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": "20.x",
+    "npm": ">=10"
+  },
   "scripts": {
     "dev": "node --watch index.js",
     "start": "node index.js",
