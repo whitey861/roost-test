@@ -1,0 +1,35 @@
+name: vaultsync
+region: syd
+services:
+  - name: api
+    source_dir: server
+    run_command: node index.js
+    instance_size_slug: basic-xxs
+    envs:
+      - key: DATABASE_URL
+        scope: RUN_TIME
+        value: ${db.DATABASE_URL}
+      - key: JWT_SECRET
+        scope: RUN_TIME
+        value: PLACEHOLDER_CHANGE_ME
+      - key: WASABI_ACCESS_KEY
+        scope: RUN_TIME
+        value: PLACEHOLDER_ADD_WHEN_READY
+      - key: WASABI_SECRET_KEY
+        scope: RUN_TIME
+        value: PLACEHOLDER_ADD_WHEN_READY
+      - key: WASABI_BUCKET
+        scope: RUN_TIME
+        value: PLACEHOLDER_ADD_WHEN_READY
+      - key: STORAGE_PROVIDER
+        scope: RUN_TIME
+        value: simulated
+  - name: client
+    source_dir: client
+    build_command: npm run build
+    output_dir: dist
+    instance_size_slug: basic-xxs
+databases:
+  - name: db
+    engine: PG
+    version: "15"
