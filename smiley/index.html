@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiley Face</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="smileyCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('smileyCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Center coordinates
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const faceRadius = 140;
+
+        // Draw face shadow
+        ctx.beginPath();
+        ctx.arc(centerX + 5, centerY + 5, faceRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        ctx.fill();
+
+        // Draw face
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, faceRadius, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFD700';
+        ctx.fill();
+        ctx.strokeStyle = '#FFA500';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        // Draw left eye
+        ctx.beginPath();
+        ctx.arc(centerX - 50, centerY - 40, 15, 0, Math.PI * 2);
+        ctx.fillStyle = '#333';
+        ctx.fill();
+
+        // Draw right eye
+        ctx.beginPath();
+        ctx.arc(centerX + 50, centerY - 40, 15, 0, Math.PI * 2);
+        ctx.fillStyle = '#333';
+        ctx.fill();
+
+        // Draw smile
+        ctx.beginPath();
+        ctx.arc(centerX, centerY + 20, 80, 0.2 * Math.PI, 0.8 * Math.PI);
+        ctx.strokeStyle = '#333';
+        ctx.lineWidth = 8;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+    </script>
+</body>
+</html>
